@@ -1,9 +1,10 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
+	workspaceRoot: '/',
 	mount: {
 		// directory name: 'build directory'
 		public: '/',
-		src: '/dist',
+		src: '/'
 	},
 	plugins: ['@snowpack/plugin-postcss', '@snowpack/plugin-sass'],
 	routes: [
@@ -18,7 +19,6 @@ export default {
 		/* ... */
 	},
 	devOptions: {
-		hmrErrorOverlay: false,
 	},
 	buildOptions: {
 		/* ... */
