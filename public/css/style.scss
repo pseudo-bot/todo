@@ -1,0 +1,217 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
+
+// Primary
+
+$Bright-Blue: hsl(220, 98%, 61%);
+$Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+// Light Theme
+
+$Very-Light-Gray: hsl(0, 0%, 98%);
+$Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+$Light-Grayish-Blue: hsl(233, 11%, 84%);
+$Dark-Grayish-Blue: hsl(236, 9%, 61%);
+$Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+
+// Dark Theme
+
+$Very-Dark-Blue: hsl(235, 21%, 11%);
+$Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+$Light-Grayish-Blue: hsl(234, 39%, 85%);
+$Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+$Dark-Grayish-Blue: hsl(234, 11%, 52%);
+$Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+$Very-Dark-Grayish-Blue-alt: hsl(237, 14%, 26%);
+
+html {
+	font-size: 10px;
+}
+
+html {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Josefin Sans';
+}
+
+.bg {
+	height: 100vh;
+	position: fixed;
+	display: block;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: $Very-Dark-Blue;
+
+	img {
+		display: block;
+		margin-inline: auto;
+	}
+}
+
+header {
+	position: absolute;
+	top: 5rem;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 2.5rem;
+}
+
+.header__text {
+	font-size: 3rem;
+	color: #fff;
+	letter-spacing: 1rem;
+	font-weight: 700;
+}
+
+.header__logo {
+	display: none;
+}
+
+.header__logo--show {
+	display: block;
+}
+
+.task-section {
+	position: absolute;
+	top: 10rem;
+	display: flex;
+	width: 85%;
+	left: 50%;
+	transform: translateX(-50%);
+	padding-block: 2rem;
+	flex-direction: column;
+
+	& > * {
+		margin-block-end: 2rem;
+	}
+}
+
+//  Task element
+
+input::selection {
+	color: blue;
+}
+
+.task-element {
+	width: 100%;
+	display: flex;
+	padding-inline: 2rem;
+	height: 5rem;
+	align-items: center;
+
+	form {
+		width: 80%;
+		margin-inline: 1rem;
+	}
+
+	input {
+		background-color: transparent;
+		outline: 0;
+		border: 0;
+		color: #fff;
+		width: 100%;
+		height: 4rem;
+	}
+
+	.task__status {
+		background-image: $Check-Background;
+		height: 20px;
+		width: 20px;
+		border-radius: 50%;
+		display: grid;
+		place-items: center;
+		cursor: pointer;
+	}
+
+	.task__delete {
+		cursor: pointer;
+	}
+}
+
+.task__status--done {
+	.task__status img {
+		display: block;
+	}
+
+	input {
+		color: #666;
+		text-decoration: line-through;
+	}
+}
+
+.task__status--hide {
+	.task__status {
+		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+		border: 1px solid $Very-Dark-Grayish-Blue;
+	}
+	.task__status img {
+		display: none;
+	}
+}
+
+.create-task .task-element {
+	background-color: $Very-Dark-Desaturated-Blue;
+
+	border-radius: 5px;
+}
+
+.create-task .task__delete {
+	display: none;
+}
+
+.all-tasks {
+	background-color: $Very-Dark-Desaturated-Blue;
+	border-radius: 5px;
+
+	.task-element {
+		border-bottom: 1px solid $Very-Dark-Grayish-Blue-alt;
+	}
+	.task-element:nth-last-child(1) {
+		border-color: transparent;
+	}
+}
+
+// Task switcher
+
+.tasks-switcher {
+	width: 100%;
+	height: 5rem;
+	background-color: $Very-Dark-Desaturated-Blue;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	color: $Dark-Grayish-Blue;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	padding-inline: 5rem;
+	font-weight: 600;
+
+	& > * {
+		cursor: pointer;
+	}
+
+	.tasks--selected {
+		color: $Bright-Blue;
+
+	}
+}
+
+
+footer {
+	color: $Dark-Grayish-Blue;
+	font-size: 1.2rem;
+	text-align: center;
+	margin-top: 2rem;
+}

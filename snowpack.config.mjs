@@ -4,7 +4,7 @@ export default {
 	mount: {
 		// directory name: 'build directory'
 		public: '/',
-		src: '/'
+		src: '/dist'
 	},
 	plugins: ['@snowpack/plugin-postcss', '@snowpack/plugin-sass'],
 	routes: [
@@ -19,6 +19,7 @@ export default {
 		/* ... */
 	},
 	devOptions: {
+		hmrErrorOverlay: false,
 	},
 	buildOptions: {
 		/* ... */
