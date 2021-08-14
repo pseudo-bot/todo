@@ -23,7 +23,11 @@ const App = () => {
 			<div className={'main ' + (lightmode ? 'main--light' : '')}>
 				<img
 					src={
-						lightmode
+						window.innerWidth > 520
+							? lightmode
+								? './dist/assets/bg-desktop-light.jpg'
+								: './dist/assets/bg-desktop-dark.jpg'
+							: lightmode
 							? './dist/assets/bg-mobile-light.jpg'
 							: './dist/assets/bg-mobile-dark.jpg'
 					}
@@ -70,9 +74,7 @@ const App = () => {
 							Completed
 						</div>
 					</div>
-					<footer>
-						Drag and drop to reorder list
-					</footer>
+					<footer>Drag and drop to reorder list</footer>
 				</div>
 			</div>
 		</TasksProvider>

@@ -3,7 +3,11 @@
 // Primary
 
 $Bright-Blue: hsl(220, 98%, 61%);
-$Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+$Check-Background: linear-gradient(
+	135deg,
+	hsl(192, 100%, 67%),
+	hsl(280, 87%, 65%)
+);
 
 // Light Theme
 
@@ -22,6 +26,8 @@ $Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
 $Dark-Grayish-Blue: hsl(234, 11%, 52%);
 $Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
 $Very-Dark-Grayish-Blue-alt: hsl(237, 14%, 26%);
+
+$model-width: 35rem;
 
 html {
 	font-size: 10px;
@@ -67,10 +73,12 @@ html {
 header {
 	position: absolute;
 	top: 5rem;
-	width: 100%;
+	width: $model-width;
 	display: flex;
 	justify-content: space-between;
-	padding: 0 2.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+
 }
 
 .header__text {
@@ -84,7 +92,7 @@ header {
 	position: absolute;
 	top: 10rem;
 	display: flex;
-	width: 85%;
+	width: $model-width;
 	left: 50%;
 	transform: translateX(-50%);
 	padding-block: 2rem;
@@ -178,7 +186,6 @@ input::selection {
 	input {
 		color: #333;
 	}
-
 }
 
 .all-tasks--light {
@@ -197,7 +204,6 @@ input::selection {
 		color: #333;
 	}
 }
-
 
 .task__status--done {
 	.task__status img {
@@ -244,14 +250,12 @@ input::selection {
 
 	.tasks--selected {
 		color: $Bright-Blue;
-
 	}
 }
 
 .tasks-switcher--light {
 	background-color: #fff;
 }
-
 
 footer {
 	color: $Dark-Grayish-Blue;
@@ -260,7 +264,17 @@ footer {
 	margin-top: 2rem;
 }
 
+.tasks, .tasks-switcher {
+	box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: 0.2);
+	border-radius: 5px;
+}
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 520px) {
+	header {
+		width: 50rem;
+	}
 
+	.task-section {
+		width: 50rem;
+	}
 }
