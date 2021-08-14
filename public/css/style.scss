@@ -45,7 +45,7 @@ html {
 	font-family: 'Josefin Sans';
 }
 
-.bg {
+.main {
 	height: 100vh;
 	position: fixed;
 	display: block;
@@ -56,7 +56,12 @@ html {
 	img {
 		display: block;
 		margin-inline: auto;
+		cursor: pointer;
 	}
+}
+
+.main--light {
+	background-color: $Very-Light-Grayish-Blue;
 }
 
 header {
@@ -73,14 +78,6 @@ header {
 	color: #fff;
 	letter-spacing: 1rem;
 	font-weight: 700;
-}
-
-.header__logo {
-	display: none;
-}
-
-.header__logo--show {
-	display: block;
 }
 
 .task-section {
@@ -101,7 +98,7 @@ header {
 //  Task element
 
 input::selection {
-	color: blue;
+	color: $Bright-Blue;
 }
 
 .task-element {
@@ -140,17 +137,6 @@ input::selection {
 	}
 }
 
-.task__status--done {
-	.task__status img {
-		display: block;
-	}
-
-	input {
-		color: #666;
-		text-decoration: line-through;
-	}
-}
-
 .task__status--hide {
 	.task__status {
 		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
@@ -163,7 +149,6 @@ input::selection {
 
 .create-task .task-element {
 	background-color: $Very-Dark-Desaturated-Blue;
-
 	border-radius: 5px;
 }
 
@@ -180,6 +165,61 @@ input::selection {
 	}
 	.task-element:nth-last-child(1) {
 		border-color: transparent;
+	}
+}
+
+.tasks--light .task-element {
+	background-color: $Very-Light-Gray;
+
+	.task__status {
+		border-color: $Light-Grayish-Blue;
+	}
+
+	input {
+		color: #333;
+	}
+
+}
+
+.all-tasks--light {
+	background-color: #fff;
+	border-radius: 5px;
+
+	.task__status {
+		border-color: $Light-Grayish-Blue;
+	}
+
+	.task-element {
+		border-bottom: 1px solid $Light-Grayish-Blue;
+	}
+
+	input {
+		color: #333;
+	}
+}
+
+
+.task__status--done {
+	.task__status img {
+		display: block;
+	}
+
+	input {
+		color: #777;
+		text-decoration: line-through;
+	}
+}
+
+.all-tasks__footer {
+	display: flex;
+	justify-content: space-between;
+	height: 5rem;
+	align-items: center;
+	padding-inline: 2rem;
+	color: $Dark-Grayish-Blue;
+
+	.footer__clearAll {
+		cursor: pointer;
 	}
 }
 
@@ -208,10 +248,19 @@ input::selection {
 	}
 }
 
+.tasks-switcher--light {
+	background-color: #fff;
+}
+
 
 footer {
 	color: $Dark-Grayish-Blue;
 	font-size: 1.2rem;
 	text-align: center;
 	margin-top: 2rem;
+}
+
+
+@media screen and (min-width: 400px) {
+
 }

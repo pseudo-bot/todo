@@ -4,7 +4,7 @@ import { TasksContext } from './TasksContext';
 
 let key = 0;
 
-const CreateTask = () => {
+const CreateTask = ({ display }) => {
 	let [tasks, setTask] = useContext(TasksContext);
 
 	const handleSubmit = (e) => {
@@ -17,15 +17,15 @@ const CreateTask = () => {
 		updatedTasks.push({
 			todo: taskInput.value,
 			status: false,
-      key: key,
+			key: key,
 		});
 		setTask(updatedTasks);
 		taskInput.value = '';
-    key++;
+		key++;
 	};
 
 	return (
-		<div className="create-task tasks">
+		<div className={'create-task tasks ' + (display ? 'tasks--light' : '')}>
 			<Task done={0}>
 				<form onSubmit={handleSubmit}>
 					<input

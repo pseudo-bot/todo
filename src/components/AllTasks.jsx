@@ -2,34 +2,43 @@ import React, { useContext } from 'react';
 import { TasksContext } from './TasksContext';
 import Task from './TaskElement';
 
-const AllTasks = ({ mode }) => {
+const AllTasks = ({ mode, display }) => {
 	let [task, setTask] = useContext(TasksContext);
 
 	const handleClick = (key) => {
-		let updatedStatus = [...task];
-		for (let value of task) {
-				if (value.key === key) {
-					updatedStatus[task.indexOf(value)].status	= !value.status;
-					break;
-				}
-		}
-		setTask(updatedStatus);
+		setTask(task.map(task => {
+			if (task.key === key) {
+				task.status = !task.status;
+				return task;
+			} else return task;
+		}));
 	};
 
 	const handleDelete = (key) => {
-		let updatedTasks = [...task];
-		let index;
-		for (let value of task) {
-			if (value.key === key) {
-				index = task.indexOf(value);
-			}
-		}
-		updatedTasks.splice(index, 1);
-		setTask(updatedTasks);
+		setTask(task.filter(task => {
+			if (task.key === key) return false;
+			else return true;
+		}));
 	};
 
+	const tasksLeft = (task) => {
+		let length = 0;
+		for (let value of task) {
+			if (value.status) continue;
+			length++;
+		}
+		return length;
+	}
+
+	const clearCompleted = () => {
+		setTask(task.filter(task => {
+			if (task.status) return false;
+			else return true;
+		}))
+	}
+
 	return (
-		<div className="all-tasks tasks">
+		<div className={'all-tasks tasks ' + (display ? 'all-tasks--light' : '')}>
 			{task
 				.filter((element) => {
 					if (mode === 'active') return !element.status;
@@ -59,6 +68,11 @@ const AllTasks = ({ mode }) => {
 						</form>
 					</Task>
 				))}
+
+			<div className="all-tasks__footer">
+				<div className="footer__taskLeft">{tasksLeft(task)} items left</div>
+				<div className="footer__clearAll" onClick={clearCompleted}>Clear Completed</div>
+			</div>
 		</div>
 	);
 };
