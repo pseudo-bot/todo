@@ -72,7 +72,7 @@ html {
 
 header {
 	position: absolute;
-	top: 5rem;
+	top: 6rem;
 	width: $model-width;
 	display: flex;
 	justify-content: space-between;
@@ -90,7 +90,7 @@ header {
 
 .task-section {
 	position: absolute;
-	top: 10rem;
+	top: 12rem;
 	display: flex;
 	width: $model-width;
 	left: 50%;
@@ -141,8 +141,17 @@ input::selection {
 	}
 
 	.task__delete {
+		position: absolute;
+		right: 2rem;
 		cursor: pointer;
+		img {
+			display: none;
+		}
 	}
+}
+
+.task-element:hover > .task__delete > img{
+	display: inline;
 }
 
 .task__status--hide {
@@ -223,6 +232,7 @@ input::selection {
 	align-items: center;
 	padding-inline: 2rem;
 	color: $Dark-Grayish-Blue;
+	font-size: 1.3rem;
 
 	.footer__clearAll {
 		cursor: pointer;
@@ -259,22 +269,25 @@ input::selection {
 
 footer {
 	color: $Dark-Grayish-Blue;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	text-align: center;
-	margin-top: 2rem;
+	margin-top: 5rem;
 }
 
-.tasks, .tasks-switcher {
-	box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: 0.2);
+.tasks, .tasks-switcher{
+	box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: 0.11);
 	border-radius: 5px;
 }
 
 @media screen and (min-width: 520px) {
 	header {
-		width: 50rem;
+		width: 55rem;
 	}
 
 	.task-section {
-		width: 50rem;
+		width: 55rem;
+	}
+	.tasks-switcher {
+		box-shadow: 0 0 0;
 	}
 }

@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { TasksContext } from './TasksContext';
 import Task from './TaskElement';
+import TaskSwitcher from './TaskSwitcher';
 
-const AllTasks = ({ mode, display }) => {
+const AllTasks = ({ mode, display, handleMode}) => {
 	let [task, setTask] = useContext(TasksContext);
 
 	const handleClick = (key) => {
@@ -43,6 +44,12 @@ const AllTasks = ({ mode, display }) => {
 		);
 	};
 
+	const displayTaskSwitcher = () => {
+		if (window.innerWidth > 520) 
+			return <TaskSwitcher mode={mode} lightmode={display} handleMode={handleMode}/>
+		else return '';
+	}
+
 	return (
 		<div className={'all-tasks tasks ' + (display ? 'all-tasks--light' : '')}>
 			<div className="draggableRegion">
@@ -78,9 +85,11 @@ const AllTasks = ({ mode, display }) => {
 			</div>
 			<div className="all-tasks__footer">
 				<div className="footer__taskLeft">{tasksLeft(task)} items left</div>
+				{displayTaskSwitcher()}
 				<div className="footer__clearAll" onClick={clearCompleted}>
 					Clear Completed
 				</div>
+
 			</div>
 		</div>
 	);

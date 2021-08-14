@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CreateTask from './CreateTask';
 import AllTasks from './AllTasks';
 import { TasksProvider } from './TasksContext';
+import TaskSwitcher from './TaskSwitcher';
 
 const App = () => {
 	const [mode, setMode] = useState('all');
@@ -16,6 +17,18 @@ const App = () => {
 	const handleDisplayMode = () => {
 		let mode = lightmode;
 		setLighmode(!mode);
+	};
+
+	const displayTaskSwitcher = () => {
+		if (window.innerWidth < 520)
+			return (
+				<TaskSwitcher
+					mode={mode}
+					lightmode={lightmode}
+					handleMode={handleMode}
+				/>
+			);
+		else return;
 	};
 
 	return (
@@ -49,31 +62,8 @@ const App = () => {
 				</header>
 				<div className="task-section">
 					<CreateTask display={lightmode} />
-					<AllTasks mode={mode} display={lightmode} />
-					<div
-						className={
-							'tasks-switcher ' + (lightmode ? 'tasks-switcher--light' : '')
-						}
-					>
-						<div
-							className={mode === 'all' ? 'tasks--selected' : ''}
-							onClick={handleMode}
-						>
-							All
-						</div>
-						<div
-							className={mode === 'active' ? 'tasks--selected' : ''}
-							onClick={handleMode}
-						>
-							Active
-						</div>
-						<div
-							className={mode === 'completed' ? 'tasks--selected' : ''}
-							onClick={handleMode}
-						>
-							Completed
-						</div>
-					</div>
+					<AllTasks mode={mode} display={lightmode} handleMode={handleMode} />
+					{displayTaskSwitcher()}
 					<footer>Drag and drop to reorder list</footer>
 				</div>
 			</div>
