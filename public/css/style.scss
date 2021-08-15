@@ -27,7 +27,7 @@ $Dark-Grayish-Blue: hsl(234, 11%, 52%);
 $Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
 $Very-Dark-Grayish-Blue-alt: hsl(237, 14%, 26%);
 
-$model-width: 35rem;
+$model-width: 32rem;
 
 html {
 	font-size: 10px;
@@ -59,6 +59,8 @@ html {
 	transform: translateX(-50%);
 	background-color: $Very-Dark-Blue;
 
+	box-shadow: 0 0 2rem rgba($color: #000000, $alpha: 0.3);
+
 	img {
 		display: block;
 		margin-inline: auto;
@@ -78,7 +80,6 @@ header {
 	justify-content: space-between;
 	left: 50%;
 	transform: translateX(-50%);
-
 }
 
 .header__text {
@@ -150,7 +151,7 @@ input::selection {
 	}
 }
 
-.task-element:hover > .task__delete > img{
+.task-element:hover > .task__delete > img {
 	display: inline;
 }
 
@@ -268,18 +269,19 @@ input::selection {
 }
 
 footer {
-	color: $Dark-Grayish-Blue;
+	color: #999;
 	font-size: 1.3rem;
 	text-align: center;
 	margin-top: 5rem;
 }
 
-.tasks, .tasks-switcher{
+.tasks,
+.tasks-switcher {
 	box-shadow: 0 1rem 1rem rgba($color: #000000, $alpha: 0.1);
 	border-radius: 5px;
 }
 
-@media screen and (min-width: 520px) {
+@media screen and (min-width: 600px) {
 	header {
 		width: 55rem;
 	}

@@ -7,6 +7,11 @@ import TaskSwitcher from './TaskSwitcher';
 const App = () => {
 	const [mode, setMode] = useState('all');
 	const [lightmode, setLighmode] = useState(true);
+	const [width, setWidth] = useState(window.innerWidth);
+
+	window.addEventListener('resize', () => {
+		setWidth(window.innerWidth);
+	});
 
 	const handleMode = (e) => {
 		if (e.target.textContent === 'All') setMode('all');
@@ -20,7 +25,7 @@ const App = () => {
 	};
 
 	const displayTaskSwitcher = () => {
-		if (window.innerWidth < 520)
+		if (width < 600)
 			return (
 				<TaskSwitcher
 					mode={mode}
@@ -35,8 +40,9 @@ const App = () => {
 		<TasksProvider>
 			<div className={'main ' + (lightmode ? 'main--light' : '')}>
 				<img
+					className="bg"
 					src={
-						window.innerWidth > 520
+						width > 600
 							? lightmode
 								? './dist/assets/bg-desktop-light.jpg'
 								: './dist/assets/bg-desktop-dark.jpg'
@@ -62,7 +68,12 @@ const App = () => {
 				</header>
 				<div className="task-section">
 					<CreateTask display={lightmode} />
-					<AllTasks mode={mode} display={lightmode} handleMode={handleMode} />
+					<AllTasks
+						mode={mode}
+						display={lightmode}
+						handleMode={handleMode}
+						width={width}
+					/>
 					{displayTaskSwitcher()}
 					<footer>Drag and drop to reorder list</footer>
 				</div>

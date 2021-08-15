@@ -3,7 +3,7 @@ import { TasksContext } from './TasksContext';
 import Task from './TaskElement';
 import TaskSwitcher from './TaskSwitcher';
 
-const AllTasks = ({ mode, display, handleMode}) => {
+const AllTasks = ({ mode, display, handleMode, width}) => {
 	let [task, setTask] = useContext(TasksContext);
 
 	const handleClick = (key) => {
@@ -45,7 +45,7 @@ const AllTasks = ({ mode, display, handleMode}) => {
 	};
 
 	const displayTaskSwitcher = () => {
-		if (window.innerWidth > 520) 
+		if (width > 600) 
 			return <TaskSwitcher mode={mode} lightmode={display} handleMode={handleMode}/>
 		else return '';
 	}
